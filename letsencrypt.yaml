@@ -35,3 +35,4 @@ spec:
   secretName: apps-cert-tls
   issuerRef:
     name: letsencrypt
+    kind: ClusterIssuer
