@@ -1,7 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cert-manager
+---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt
+  namespace: cert-manager
 spec:
   acme:
     # You must replace this email address with your own.
@@ -17,3 +23,15 @@ spec:
     - http01:
         ingress:
           class: nginx
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: acma-cert
+  namespace: cert-manager
+spec:
+  dnsNames:
+    - apps.sambriggs.dev
+  secretName: acma-cert-tls
+  issuerRef:
+    name: letsencrypt
