@@ -9,9 +9,7 @@ spec:
   - host: "apps.sambriggs.dev"
     http:
       paths:
-      - pathType: Prefix
-        path: "/genealogy"
-        backend:
+      - backend:
           serviceName: webtrees
           servicePort: 80
         path: /
