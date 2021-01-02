@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: haproxy
+    # TLS issuer
+    certmanager.io/cluster-issuer: letsencrypt
   name: proxy
 spec:
   rules:
@@ -12,5 +14,12 @@ spec:
       - backend:
           service:
             name: webtrees
-            port: 80
+            port:
+              number: 80
         path: /
+        pathType: Prefix
+  tls:
+  - # cert-manager will store the certificate and key in this secret
+    secretName: mysite-cert 
+    hosts:
+    - apps.sambriggs.dev

@@ -3,7 +3,7 @@ kind: Namespace
 metadata:
   name: cert-manager
 ---
-apiVersion: cert-manager.io/v1
+apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:
   name: letsencrypt
@@ -14,25 +14,12 @@ spec:
     # Let's Encrypt will use this to contact you about expiring
     # certificates, and issues related to your account.
     email: certs@sambriggs.dev
-    server: https://acme-v02.api.letsencrypt.org/directory
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       # Secret resource that will be used to store the account's private key.
       name: example-issuer-account-key
     # Add a single challenge solver, HTTP01 using nginx
     solvers:
     - http01:
-        ingress:
-          class: nginx
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: apps-cert
-  namespace: cert-manager
-spec:
-  dnsNames:
-    - apps.sambriggs.dev
-  secretName: apps-cert-tls
-  issuerRef:
-    name: letsencrypt
-    kind: ClusterIssuer
+        ingress: {}
+
