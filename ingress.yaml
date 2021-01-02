@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: haproxy
+  name: proxy
+spec:
+  rules:
+  - host: "apps.sambriggs.dev"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/genealogy"
+        backend:
+          serviceName: webtrees
+          servicePort: 80
+        path: /
