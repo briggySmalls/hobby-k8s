@@ -2,9 +2,16 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: http-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt"
 spec:
+  tls:
+  - hosts:
+    - apps.sambriggs.dev
+    secretName: apps-tls
   rules:
-  - http:
+  - host: apps.sambriggs.dev 
+    http:
       paths:
       - path: /
         backend:
