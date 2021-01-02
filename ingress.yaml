@@ -1,25 +1,12 @@
-apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: haproxy
-    # TLS issuer
-    certmanager.io/cluster-issuer: letsencrypt
-  name: proxy
+  name: http-ingress
 spec:
   rules:
-  - host: "apps.sambriggs.dev"
-    http:
+  - http:
       paths:
-      - backend:
-          service:
-            name: webtrees
-            port:
-              number: 80
-        path: /
-        pathType: Prefix
-  tls:
-  - # cert-manager will store the certificate and key in this secret
-    secretName: mysite-cert 
-    hosts:
-    - apps.sambriggs.dev
+      - path: /
+        backend:
+          serviceName: webtrees
+          servicePort: 80
