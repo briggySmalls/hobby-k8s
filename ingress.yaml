@@ -7,10 +7,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - apps.sambriggs.dev
+    - webtrees.apps.sambriggs.dev
     secretName: apps-tls
   rules:
-  - host: apps.sambriggs.dev 
+  - host: webtrees.apps.sambriggs.dev
     http:
       paths:
       - path: /
