@@ -57,7 +57,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: nathanvaughn/webtrees:latest
+      - image: briggysmalls/personal-webtrees:latest
         name: webtrees
         ports:
         - containerPort: 80
