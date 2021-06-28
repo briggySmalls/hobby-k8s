@@ -10,6 +10,7 @@ spec:
   selector:
     app: webtrees
     tier: frontend
+  type: LoadBalancer
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
