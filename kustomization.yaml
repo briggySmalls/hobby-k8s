@@ -15,3 +15,5 @@ secretGenerator:
 resources:
   - mysql-deployment.yaml
   - webtrees-deployment.yaml
+  - ingress.yaml
+  - letsencrypt.yaml
