@@ -6,6 +6,12 @@ secretGenerator:
   literals:
   - username=webtrees
   - password=badpassword
+- name: webtrees-admin
+  literals:
+  - name=Sam Briggs
+  - username=briggySmalls
+  - password=Q%8pL7#hU^Ap6U
+  - email=webtrees-admin@sambriggs.dev
 resources:
   - mysql-deployment.yaml
   - webtrees-deployment.yaml

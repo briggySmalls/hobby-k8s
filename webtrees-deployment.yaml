@@ -59,6 +59,49 @@ spec:
       containers:
       - image: briggysmalls/personal-webtrees:latest
         name: webtrees
+        env:
+        - name: BASE_URL
+          value: https://webtrees.apps.sambriggs.dev/
+        - name: DB_TYPE
+          value: mysql
+        - name: DB_HOST
+          value: webtrees-mysql
+        - name: DB_PORT
+          value: 3306
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysql-user
+              key: username
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: mysql-user
+              key: password
+        - name: PRETTY_URLS
+          value: true
+        - name: LANG
+          value: en-GB
+        - name: WT_NAME
+          valueFrom:
+            secretKeyRef:
+              name: webtrees-admin
+              key: name
+        - name: WT_USER
+          valueFrom:
+            secretKeyRef:
+              name: webtrees-admin
+              key: username
+        - name: WT_PASS
+          valueFrom:
+            secretKeyRef:
+              name: webtrees-admin
+              key: password
+        - name: WT_EMAIL
+          valueFrom:
+            secretKeyRef:
+              name: webtrees-admin
+              key: email
         ports:
         - containerPort: 80
           name: webtrees
