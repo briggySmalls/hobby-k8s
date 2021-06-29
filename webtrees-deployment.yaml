@@ -67,7 +67,7 @@ spec:
         - name: DB_HOST
           value: webtrees-mysql
         - name: DB_PORT
-          value: 3306
+          value: "3306"
         - name: DB_USER
           valueFrom:
             secretKeyRef:
