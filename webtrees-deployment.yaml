@@ -61,7 +61,7 @@ spec:
         name: webtrees
         env:
         - name: BASE_URL
-          value: https://webtrees.apps.sambriggs.dev/
+          value: https://webtrees.apps.sambriggs.dev
         - name: DB_TYPE
           value: mysql
         - name: DB_HOST
