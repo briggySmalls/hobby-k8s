@@ -57,7 +57,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: briggysmalls/personal-webtrees:latest
+      - image: briggysmalls/personal-webtrees:2.0.16
         name: webtrees
         env:
         - name: BASE_URL
