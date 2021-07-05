@@ -10,7 +10,7 @@ secretGenerator:
   literals:
   - name=Sam Briggs
   - username=briggySmalls
-  - password=Q%8pL7#hU^Ap6U
+  - password=changeme
   - email=webtrees-admin@sambriggs.dev
 resources:
   - mysql-deployment.yaml
