@@ -6,11 +6,11 @@ metadata:
     cert-manager.io/cluster-issuer: "letsencrypt"
     acme.cert-manager.io/http01-edit-in-place: "true"
     kubernetes.io/ingress.class: public
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   tls:
   - hosts:
     - webtrees.apps.sambriggs.dev
+    - quayfm.apps.sambriggs.dev
     secretName: apps-tls
   rules:
   - host: webtrees.apps.sambriggs.dev
@@ -23,3 +23,13 @@ spec:
             name: webtrees
             port:
               number: 80
+  - host: quayfm.apps.sambriggs.dev
+    http:
+      paths:
+      - path: /live
+        pathType: Exact
+        backend:
+          service:
+            name: quayfm-proxy
+            port:
+              number: 1071
